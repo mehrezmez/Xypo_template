@@ -16,6 +16,7 @@ html {
 }
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 /*end global rules*/
 /*start component*/
@@ -85,9 +86,6 @@ button:hover {
 /*end component*/
 /*start header*/
 .header {    
-    background-image: url(images/background.png);
-    background-size: cover;
-    background-position: center;
     display: flex;
     align-items: center;
 }
@@ -106,7 +104,7 @@ button:hover {
 .header > .image:nth-of-type(2) {
     max-width: 40px;
     position: fixed;
-    z-index: 4;
+    z-index: 5;
     right: 100px;
     top: 0;
     padding-top: 20px;
@@ -119,6 +117,51 @@ button:hover {
         right: 20px;
     }
 }
+.header > i {
+    font-size: 25px;
+    position: fixed;
+    right: 40px;
+    z-index: 2;
+}
+/* .header .dark-mode {
+    position: fixed;
+    right: 40px;
+}
+.header .dark-mode i {
+    font-size: 20px;
+}
+with icon(i self) must use after
+.header .dark-mode::before {
+    content: attr(data-icon);
+    background-color: black;
+    position: absolute;
+    top: -40px;
+    width: 66px;
+    transform: translateX(-50%);
+    left: 50%;
+    color: white;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.header .dark-mode::after {
+    content: "";
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -12px;
+    position: absolute;
+}
+.header .dark-mode::before,
+.header .dark-mode::after  {
+    display: none;
+}
+.header .dark-mode:hover::before,
+.header .dark-mode:hover::after  {
+    display: block;
+} */
 .header ul {
     list-style: none;
     position: fixed;
@@ -130,7 +173,7 @@ button:hover {
     padding-left: 15px;
     height: 100vh;
     transition: transform 0.5s;
-    z-index: 3;
+    z-index: 4;
 }
 @media (max-width: 767px) {
     .header ul {
@@ -153,12 +196,13 @@ button:hover {
         text-align: center;
     }
 }
-.header .text h1 {
+.header .text h3 {
     width: 285px;
     font-size: 28px;
     margin-bottom: 20px;
     line-height: 1.6;
 }
+
 .header .text p {
     width: 400px;
 }
@@ -168,7 +212,7 @@ button:hover {
     }
 }
 @media (max-width: 767px) {
-    .header .text h1,   
+    .header .text h3,   
     .header .text p {
         width: auto;
     }
@@ -199,15 +243,19 @@ button:hover {
     width: 60px;
 }
 .mobile-img {
-    max-width: fit-content;
-    display: none;
     position: absolute;
-    bottom: 0;
-    left: 0;
+}
+.mobile-img img {
+    width: auto;
 }
 @media (max-width: 767px) {
     .mobile-img {
         display: block;
+        bottom: 0;
+        left: 0;
+    }
+    .mobile-img img {
+        width: 100%;
     }
 }
 .icon {
@@ -221,9 +269,11 @@ button:hover {
     left: 0;
     z-index: 2;
 }
-.icon .image {
-    max-width: 30px;
+.icon i {
+    font-size: 35px;
     margin: 20px 0;
+    color: black;
+    z-index: 3;
 }
 @media (max-width: 767px) {
     .icon {
@@ -235,8 +285,8 @@ button:hover {
         left: auto;
         z-index: 2;
     }
-    .icon .image {
-        max-width: 25px;
+    .icon i {
+        font-size: 25px;
         margin: 0 5px;
     }
 }
